@@ -1,0 +1,46 @@
+# Игнорируем виртуальное окружение
+venv/
+.env
+*.env
+
+# Игнорируем зависимости (если используешь pipenv или poetry)
+Pipfile
+Pipfile.lock
+poetry.lock
+
+# Игнорируем кеши Python
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+
+# Логи и отладочные файлы
+logs/
+*.log
+debug.log
+
+# Базы данных (если используешь SQLite)
+*.sqlite3
+*.db
+
+# Кэш MyPy и других инструментов
+.mypy_cache/
+.pytest_cache/
+.tox/
+.coverage
+htmlcov/
+
+# Файлы IDE и редакторов
+.vscode/
+.idea/
+*.iml
+
+# Сборочные файлы (если вдруг решишь собирать пакет)
+build/
+dist/
+*.egg-info/
+
+# Frontend (если вдруг будет)
+node_modules/
+
+alembic/versions/*

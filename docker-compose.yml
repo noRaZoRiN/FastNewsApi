@@ -1,0 +1,38 @@
+services:
+
+  db:
+    image: postgres:latest
+    expose:
+      - "5432"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+  server:
+    build:
+      context: .
+      dockerfile: ./docker/server/DockerFile
+    entrypoint: /app/docker/server/server-entrypoint.sh
+    expose:
+      - "8000"
+    env_file:
+      - .env
+    depends_on:
+      - db
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - server
+
+volumes:
+  data:
+
+  
